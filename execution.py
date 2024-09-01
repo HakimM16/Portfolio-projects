@@ -1,18 +1,21 @@
+"""
+This timer function calculates the the time taken for a function to run
+"""
+import time
+
 def timer(func):
-    from time import time
-
-    t1 = time()
-    func
-    t2 = time()
-
-    diff = t2 - t1
-    print(f"Time taken for {func.__name__}: {diff}s")
+    def wrapper(*args, **kwargs):
+        t1 = time.time()
+        function = func(*args, **kwargs)
+        t2 = time.time()
+        diff = t2 - t1
+        print(f"Time taken for {func.__name__}: {diff:.4f}s")
+        return function
+    return wrapper
 
 
 @timer
-def prime(num):
-    list = []
-    for i in range(1, num + 1):
-        if num % i == 0:
-            list.append(i)
-    return list
+def example():
+    time.sleep(2)
+
+example()
