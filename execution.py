@@ -6,7 +6,7 @@ def timer(func):
     t2 = time()
 
     diff = t2 - t1
-    print(f"Time taken for function: {diff}")
+    print(f"Time taken for {func.__name__}: {diff}s")
 
 
 @timer
