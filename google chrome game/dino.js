@@ -90,6 +90,14 @@ function update() {
         let cactus = cactusArray[i];
         cactus.x += velocityX;
         context.drawImage(cactus.img, cactus.x, cactus.y, cactus.width, cactus.height);
+
+        if (detectCollision(dino, cactus)){
+            gameOver = true;
+            dinoImg.src = "./img/dino-dead.png";
+            dinoImg.onload = function() {
+                context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
+            }
+        }
     }
 }
 
@@ -98,7 +106,7 @@ function moveDino(e) {
         return;
     }
 
-    if ((e.code == "space" || e.code == "ArrowUp") && dino.y == dinoY) {
+    if ((e.code == "Space" || e.code == "ArrowUp") && dino.y == dinoY) {
         // jump
         velocityY = -10;
     }
@@ -137,3 +145,11 @@ function placeCactus() {
 
     }
 }
+
+function detectCollision(a, b) {
+    return a.x < b.x + b.width && // a's top left corner doesn't reach b's top rght corner
+           a.x + a.width > b.x && // a's top right corner passes b's top left corner
+           a.y < b.y + b.height && // a's top left corner doesn't reach b's bottom left corner
+           a.y + a.height > b.y; // a's bottom left corner passes b's top left corner
+}
+
