@@ -69,12 +69,20 @@ window.onload = function() {
 
     requestAnimationFrame(update);
     setInterval(placeCactus, 1000); // 1000 miliseconds = 1 second
+    document.addEventListener("keydown", moveDino);
 }
 
 function update() {
     requestAnimationFrame(update);
+    if (gameOver) {
+        return;
+    }
+
+    context.clearRect(0, 0, board.width, board.height);
 
     // dino
+    velocityY += gravity;
+    dino.y = Math.min(dino.y + velocityY, dinoY); // apply gravity to current dino.y, making sure it doesn't exceed the ground
     context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
 
     // cactus
@@ -82,6 +90,17 @@ function update() {
         let cactus = cactusArray[i];
         cactus.x += velocityX;
         context.drawImage(cactus.img, cactus.x, cactus.y, cactus.width, cactus.height);
+    }
+}
+
+function moveDino(e) {
+    if (gameOver) {
+        return;
+    }
+
+    if ((e.code == "space" || e.code == "ArrowUp") && dino.y == dinoY) {
+        // jump
+        velocityY = -10;
     }
 }
 
@@ -112,5 +131,9 @@ function placeCactus() {
         cactus.width = cactus1Width;
         cactusArray.push(cactus);
     }
-     
+    
+    if (cactusArray.length > 5) {
+        cactusArray.shift(); // remove the first element from the array so that the array doesn't constantly grow
+
+    }
 }
