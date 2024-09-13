@@ -99,6 +99,12 @@ function update() {
             }
         }
     }
+
+    // score
+    context.fillstyle = "black";
+    context.font = "20px courier";
+    score++;
+    context.fillText(score, 5, 20);
 }
 
 function moveDino(e) {
