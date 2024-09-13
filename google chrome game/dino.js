@@ -26,6 +26,8 @@ window.onload = function() {
     context = board.getContext("2d"); // used for drawing on the board
 
     // draw inttal dinosaur
-    context.fillstyle = "green";
-    context.fillRect(dino.x, dinoY, dino.width, dino.height);
+    //context.fillstyle = "green";
+    //context.fillRect(dino.x, dinoY, dino.width, dino.height);
+
+    
 }
