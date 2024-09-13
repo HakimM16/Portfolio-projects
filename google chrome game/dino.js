@@ -22,4 +22,10 @@ window.onload = function() {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
+
+    context = board.getContext("2d"); // used for drawing on the board
+
+    // draw inttal dinosaur
+    context.fillstyle = "green";
+    context.fillRect(dino.x, dinoY, dino.width, dino.height);
 }
