@@ -33,6 +33,14 @@ let cactus1Img;
 let cactus2Img;
 let cactus3Img;
 
+// physics
+let velocityX = -8; // cactus moving left speed
+let velocityY = 0;
+let gravity = .4;
+
+let gameOver = false;
+let score = 0;
+
 window.onload = function() {
     board = document.getElementById("board");
     board.height = boardHeight;
@@ -72,6 +80,7 @@ function update() {
     // cactus
     for (let i = 0; i < cactusArray.length; i++) {
         let cactus = cactusArray[i];
+        cactus.x += velocityX;
         context.drawImage(cactus.img, cactus.x, cactus.y, cactus.width, cactus.height);
     }
 }
