@@ -29,5 +29,9 @@ window.onload = function() {
     //context.fillstyle = "green";
     //context.fillRect(dino.x, dinoY, dino.width, dino.height);
 
-    
+    dinoImg = new Image();
+    dinoImg.src = "./img/dino.png";
+    dinoImg.onload = function() {
+        context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
+    }
 }
