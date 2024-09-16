@@ -29,7 +29,7 @@ while loop:
             raise NegativeNumError("Number can't be negative")
         fib = generator(number)
         print(f"Fibonacci sequence of {number} numbers: {fib}")
-        print(f"F{number}: {fib[number - 1]}")
+        print(get_nth_num(number))
         loop = False
     except NegativeNumError as e:
         print(f"Error: {e}")
