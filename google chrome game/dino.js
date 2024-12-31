@@ -68,7 +68,7 @@ window.onload = function() {
     cactus3Img.src = "./img/cactus3.png";
 
     requestAnimationFrame(update);
-    setInterval(placeCactus, 1000); // 1000 miliseconds = 1 second
+    setInterval(placeCactus, 500); // 1000 miliseconds = 1 second
     document.addEventListener("keydown", moveDino);
 }
 
